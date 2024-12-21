@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx", // Ensures TypeScript compiles JSX
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"]
+}
