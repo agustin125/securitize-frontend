@@ -1,4 +1,3 @@
-import React from 'react';
 import { withdrawFunds } from '../../services/api';
 import { getSignerAddress, performTx } from '../../utils/metamask-utils';
 import { Button } from '../ui/Button';

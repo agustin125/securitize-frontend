@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const WalletNotification = () => {
   return (
     <div className="wallet-notification">
