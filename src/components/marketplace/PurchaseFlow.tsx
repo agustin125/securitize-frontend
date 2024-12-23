@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { purchaseItem } from '../../services/api';
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
+import { performTx } from '../../utils/metamask-utils';
 
 export const PurchaseFlow = () => {
   const [form, setForm] = useState({ listingId: '', value: '' });
@@ -13,11 +14,10 @@ export const PurchaseFlow = () => {
 
   const handlePurchase = async () => {
     try {
-      await purchaseItem(form);
-      alert('Purchase successful');
+      const response = await purchaseItem(form);
+      await performTx(response);
     } catch (error) {
       console.error(error);
-      alert('Failed to purchase');
     }
   };
 

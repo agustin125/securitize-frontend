@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ResponseDto } from './dto/response-item.dto';
 
-const API_URL = 'http://localhost:3001/'; // Update with backend URL
+const API_URL = 'http://localhost:3001/marketplace'; // Update with backend URL
 
 export const fetchItems = async () => {
     const response = await axios.get(`${API_URL}/items`);
@@ -13,9 +13,19 @@ export const fetchItems = async () => {
  * @param data - Data for listing an item (token address, amount, and price)
  * @returns The response data from the API
  */
-export const listItem = async (data: { token: string; amount: string; price: string }): Promise<ResponseDto> => {
+export const listItem = async (data: { token: string; amount: string; price: string, address: string }): Promise<ResponseDto[]> => {
     const response = await axios.post<ResponseDto>(`${API_URL}/list`, data);
-    return response.data as ResponseDto;
+    return response.data as unknown as ResponseDto[];
+};
+
+/**
+ * List a new item for sale behalf
+ * @param data - Data for listing an item (token address, amount, and price)
+ * @returns The response data from the API
+ */
+export const listItemBehalf = async (data: { token: string; amount: string; price: string,  address: string, signature?: string }): Promise<ResponseDto[]> => {
+    const response = await axios.post<ResponseDto>(`${API_URL}/listBehalf`, data);
+    return response.data as unknown as ResponseDto[];
 };
 
 /**

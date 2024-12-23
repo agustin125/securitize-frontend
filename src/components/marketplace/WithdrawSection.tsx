@@ -1,15 +1,16 @@
 import React from 'react';
 import { withdrawFunds } from '../../services/api';
+import { getSignerAddress, performTx } from '../../utils/metamask-utils';
 
 export const WithdrawSection = () => {
   const handleWithdraw = async () => {
-    try {
-      await withdrawFunds({signerAddress: "0x1234567890123456789012345678901234567890"}); // Update with signer address
-      alert('Funds withdrawn successfully');
-    } catch (error) {
-      console.error(error);
-      alert('Failed to withdraw funds');
-    }
+        try {
+          const signerAddress = await getSignerAddress();
+          const response = await withdrawFunds({signerAddress});
+          await performTx(response);
+        } catch (error) {
+          console.error(error);
+        }
   };
 
   return (
