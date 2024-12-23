@@ -1,6 +1,7 @@
 import React from 'react';
 import { withdrawFunds } from '../../services/api';
 import { getSignerAddress, performTx } from '../../utils/metamask-utils';
+import { Button } from '../ui/Button';
 
 export const WithdrawSection = () => {
   const handleWithdraw = async () => {
@@ -16,7 +17,7 @@ export const WithdrawSection = () => {
   return (
     <div>
       <h2>Withdraw Funds</h2>
-      <button onClick={handleWithdraw}>Withdraw</button>
+      <Button onClick={handleWithdraw}>Withdraw</Button>
     </div>
   );
 };

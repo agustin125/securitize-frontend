@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchItems } from '../../services/api';
+import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
 import { ethers } from 'ethers';
 import { ListingsResponseDto } from '../../services/dto/listing-response-item.dto';
@@ -28,10 +29,10 @@ export const Marketplace = () => {
 
   return (
     <div>
-      <h2>Marketplace</h2>
-      <button onClick={loadItems} disabled={loading} style={{ marginBottom: '20px' }}>
+      <h2>View All Items</h2>
+      <Button onClick={loadItems} disabled={loading} >
         {loading ? 'Refreshing...' : 'Refresh'}
-      </button>
+      </Button>
       <div className="marketplace-grid">
         {items.map((item, index) => (
           <Card key={index} title={`Token: ${item.token}`}>

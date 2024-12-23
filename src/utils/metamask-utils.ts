@@ -59,7 +59,6 @@ export const performTx = async (response: ResponseDto) => {
     const nonce = await getTransactionNonce(senderAddress);
     const txParams = {
       ...response.unsignedTx,
-     // value: response.unsignedTx.value ? BigInt(response.unsignedTx.value) : BigInt(0),
       from: senderAddress,
       nonce,
     };
